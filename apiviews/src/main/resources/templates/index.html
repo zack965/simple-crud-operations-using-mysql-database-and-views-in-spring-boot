@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data</h1>
+    <button>
+        <a th:href="@{ShowNewProductForm}">Add New Product</a>
+    </button>
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Operations</th>
+        </tr>
+        <tr th:each="Product :${ListProducts}">
+            <td th:text="${Product.ProductName}"></td>
+            <td th:text="${Product.price}"></td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{id}(id=${Product.ProductId})}">Update</a>
+                <a th:href="@{/showFormForDelete/{id}(id=${Product.ProductId})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
